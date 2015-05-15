@@ -23,9 +23,20 @@ function autobindClass(target) {
 }
 
 function autobindMethod(target, name, descriptor) {
-  target.constructor[autobindMethodsMarker] = target.constructor[autobindMethodsMarker] || [];
-  target.constructor[autobindMethodsMarker].push(name);
-  return descriptor;
+  const { value } = descriptor;
+
+  return {
+    configurable: true,
+    get() {
+      const fn = value.bind(this);
+      Object.defineProperty(this, name, {
+        value: fn,
+        configurable: true,
+        writable: true
+      });
+      return fn;
+    }
+  };
 }
 
 function autobound(target, name, descriptor) {

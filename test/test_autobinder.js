@@ -49,27 +49,6 @@ exports.withoutBinding = {
   }
 };
 
-exports.withAutoboundClass = {
-  setUp: function(callback) {
-    @autobound
-    class AutoBound {
-      constructor(name) {
-        this.name = name;
-      }
-
-      @autobound
-      getName() {
-        return this.name;
-      }
-    }
-    this.AutoBound = AutoBound;
-    callback();
-  },
-
-  testIsAutomaticallyBound: testIsAutomaticallyBound,
-  testIgnoresRebinding: testIgnoresRebinding
-};
-
 exports.withAutoboundMethods = {
   setUp: function(callback) {
     class AutoBound {
@@ -93,7 +72,6 @@ exports.withAutoboundMethods = {
 
 exports.withAutoboundSubclasses = {
   setUp: function(callback) {
-    @autobound
     class Parent {
       @autobound
       getName() {
@@ -131,7 +109,6 @@ exports.withAutoboundSubclasses = {
 
 exports.withNonAutoboundSubclasses = {
   setUp: function(callback) {
-    @autobound
     class Parent {
       @autobound
       getName() {

@@ -5,7 +5,7 @@ ES7 Autobinder
 
 ES7 Autobinder allows you to declaratively and automatically bind methods on ES6 classes to `this` when called.
 
-It uses ES7 decorators to mark classes and methods, and so requires an ES7-capable environment with the following features:
+It uses ES7 decorators to annotate methods, and so requires an ES7-capable environment with the following features:
 
 * Classes
 * Decorators
@@ -26,28 +26,10 @@ API
 
 * **`require("es7-autobinder").autobound`**
 
-A decorator used to mark a class or method as autobound. If you use this decorator on your class, you do not need to use `autobindMethods`, but your class is wrapped by another class that performs the autobinding.
-
-```javascript
-@autobound
-class MyClass {
-  @autobound
-  myMethod() {
-    // ...
-  }
-}
-```
-
-* **`require("es7-autobinder").autobindMethods`**
-
-A method that will iterate over every method in the class marked as autobound and then bind it. Can be used in place of marking a class with `autobound`, which prevents your class from being wrapped.
+A decorator used to mark a method as autobound.
 
 ```javascript
 class MyClass {
-  constructor() {
-    autobindMethods(this);
-  }
-
   @autobound
   myMethod() {
     // ...
@@ -97,48 +79,6 @@ const { autobound } = require("es7-autobinder");
 
 class Clicker {
   constructor(selector) {
-    this.onClickText = "clicked!";
-    $(selector).click(this.handleClick);
-  }
-
-  @autobound
-  handleClick() {
-    console.log(this.onClickText);
-  }
-}
-
-const instance = new Clicker(".element");
-```
-
-In addition to decorating the method, you must either decorate the class:
-
-```javascript
-const { autobound } = require("es7-autobinder");
-
-@autobound
-class Clicker {
-  constructor(selector) {
-    this.onClickText = "clicked!";
-    $(selector).click(this.handleClick);
-  }
-
-  @autobound
-  handleClick() {
-    console.log(this.onClickText);
-  }
-}
-
-const instance = new Clicker(".element");
-```
-
-or manually call `autobindMethods` in the class's constructor:
-
-```javascript
-const { autobound, autobindMethods } = require("es7-autobinder");
-
-class Clicker {
-  constructor(selector) {
-    autobindMethods(this);
     this.onClickText = "clicked!";
     $(selector).click(this.handleClick);
   }
