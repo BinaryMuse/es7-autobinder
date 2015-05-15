@@ -14,6 +14,13 @@ It uses ES7 decorators to mark classes and methods, and so requires an ES7-capab
 
 The [Babel](http://babeljs.io/) project with [stage 1 experimental features](http://babeljs.io/docs/usage/experimental/) enabled and the [Babel polyfill](http://babeljs.io/docs/usage/polyfill/) supplied can provide this.
 
+Installation
+------------
+
+```
+npm install [--save] es7-autobinder
+```
+
 API
 ---
 
