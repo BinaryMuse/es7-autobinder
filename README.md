@@ -14,6 +14,40 @@ It uses ES7 decorators to mark classes and methods, and so requires an ES7-capab
 
 The [Babel](http://babeljs.io/) project with [stage 1 experimental features](http://babeljs.io/docs/usage/experimental/) enabled and the [Babel polyfill](http://babeljs.io/docs/usage/polyfill/) supplied can provide this.
 
+API
+---
+
+* **`require("es7-autobinder").autobound`**
+
+A decorator used to mark a class or method as autobound. If you use this decorator on your class, you do not need to use `autobindMethods`, but your class is wrapped by another class that performs the autobinding.
+
+```javascript
+@autobound
+class MyClass {
+  @autobound
+  myMethod() {
+    // ...
+  }
+}
+```
+
+* **`require("es7-autobinder").autobindMethods`**
+
+A method that will iterate over every method in the class marked as autobound and then bind it. Can be used in place of marking a class with `autobound`, which prevents your class from being wrapped.
+
+```javascript
+class MyClass {
+  constructor() {
+    autobindMethods(this);
+  }
+
+  @autobound
+  myMethod() {
+    // ...
+  }
+}
+```
+
 Examples
 --------
 
