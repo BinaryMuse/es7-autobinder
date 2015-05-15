@@ -1,7 +1,11 @@
 ES7 Autobinder
 ==============
 
-ES7 Autobinder allows you to declaratively and automatically bind methods on ES6 classes to `this` when called. It uses ES7 decorators to mark classes and methods, and so requires an ES7-capable environment with the following features:
+[![Build Status](https://travis-ci.org/BinaryMuse/es7-autobinder.svg?branch=master)](https://travis-ci.org/BinaryMuse/es7-autobinder)
+
+ES7 Autobinder allows you to declaratively and automatically bind methods on ES6 classes to `this` when called.
+
+It uses ES7 decorators to mark classes and methods, and so requires an ES7-capable environment with the following features:
 
 * Classes
 * Decorators
