@@ -1,4 +1,4 @@
-const { autobound, autobindMethods } = require("../");
+const { autobound } = require("../");
 
 exports.withoutBinding = {
   setUp: function(callback) {
@@ -49,27 +49,6 @@ exports.withoutBinding = {
   }
 };
 
-exports.withAutoboundMethods = {
-  setUp: function(callback) {
-    class AutoBound {
-      constructor(name) {
-        autobindMethods(this);
-        this.name = name;
-      }
-
-      @autobound
-      getName() {
-        return this.name;
-      }
-    }
-    this.AutoBound = AutoBound;
-    callback();
-  },
-
-  testIsAutomaticallyBound: testIsAutomaticallyBound,
-  testIgnoresRebinding: testIgnoresRebinding
-};
-
 exports.withAutoboundSubclasses = {
   setUp: function(callback) {
     class Parent {
@@ -79,7 +58,6 @@ exports.withAutoboundSubclasses = {
       }
     }
 
-    @autobound
     class AutoBound extends Parent {
       constructor(name) {
         super();
