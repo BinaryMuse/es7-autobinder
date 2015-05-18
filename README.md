@@ -3,14 +3,7 @@ ES7 Autobinder
 
 [![Build Status](https://travis-ci.org/BinaryMuse/es7-autobinder.svg?branch=master)](https://travis-ci.org/BinaryMuse/es7-autobinder)
 
-ES7 Autobinder allows you to declaratively and automatically bind methods on ES6 classes to `this` when called.
-
-It uses ES7 decorators to annotate class methods, and so requires an ES7-capable environment with the following features:
-
-* Classes
-* Decorators
-
-The [Babel](http://babeljs.io/) project with [stage 1 experimental features](http://babeljs.io/docs/usage/experimental/) enabled and the [Babel polyfill](http://babeljs.io/docs/usage/polyfill/) supplied can provide this.
+ES7 Autobinder allows you to declaratively and automatically bind methods on ES6 classes to `this` when called. It uses ES7 decorators to annotate class methods, and so requires an environment supporting classes and decorators. The [Babel](http://babeljs.io/) project with [stage 1 experimental features](http://babeljs.io/docs/usage/experimental/) enabled can provide this.
 
 Installation
 ------------
