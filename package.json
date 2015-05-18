@@ -2,9 +2,11 @@
   "name": "es7-autobinder",
   "version": "1.1.0",
   "description": "Automatically bind methods in ES6 classes to 'this' with ES7 decorators",
-  "main": "index.js",
+  "main": "build/index.js",
   "scripts": {
-    "test": "babel-node --stage 1 node_modules/.bin/nodeunit test/test_*.js"
+    "test": "babel-node --stage 1 node_modules/.bin/nodeunit test/test_*.js",
+    "build": "mkdir -p build && babel --stage 1 index.js > build/index.js",
+    "prepublish": "npm run build"
   },
   "author": "BinaryMuse",
   "license": "MIT",
