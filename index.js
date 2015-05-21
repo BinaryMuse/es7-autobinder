@@ -1,18 +1,16 @@
-function autobound(target, name, descriptor) {
+export function autobound(target, name, descriptor) {
   const { value } = descriptor;
 
   return {
     configurable: true,
     get() {
-      const fn = value.bind(this);
+      const boundValue = value.bind(this);
       Object.defineProperty(this, name, {
-        value: fn,
+        value: boundValue,
         configurable: true,
         writable: true
       });
-      return fn;
+      return boundValue;
     }
   };
 }
-
-module.exports = { autobound };
